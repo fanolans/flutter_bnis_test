@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/market_info/bloc/crypto_bloc.dart';
-import 'features/market_info/data/repository/web_socket_repository.dart';
+import 'core/app_bloc_provider.dart';
 import 'features/market_info/presentation/pages/market_info_page.dart';
 
 void main() {
@@ -14,14 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => CryptoBloc(
-            WebSocketCryptoRepository(),
-          ),
-        ),
-      ],
+    return AppBlocProvider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(useMaterial3: true),
